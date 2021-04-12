@@ -4,9 +4,9 @@
 3 . new word show
 4. 단어 맞추면 스코어 */
 
-let gameTime = 3;
+let gameTime = 10;
 let time = gameTime;
-let timeInterval;
+// let timeInterval;
 let score = 0;
 let wrong = 0;
 let words =[];
@@ -22,17 +22,15 @@ const wordInput = document.querySelector('.word-input');
 const scoreDisplay = document.querySelector('.score');
 const wrongDisplay = document.querySelector('.score_wrong');
 
-
 // js 1. start
 init();
 
 function init() {
   getWords();           //js 4. 
-    wordInput.addEventListener('change',match);
+  wordInput.addEventListener('change',match);
 }
 
 //js 4. axios /  new words
-
 
 function getWords() {    
 
@@ -51,13 +49,7 @@ function getWords() {
 
         console.log(words)
         buttonChange('game start');
-
-        /*                                                                          🌊  
-        🚀2. random 
-        4. less than 10 letters word , take
-        6. push those word to words array
-        
-        */
+      
     })
     .catch(function (error) {
         // handle error
@@ -68,28 +60,19 @@ function getWords() {
     });   
 }
 
-
-
-
 // js 2. button click & run
+
 button.addEventListener('click', run);
 
 function run(){
-    /* 1. 버튼이 게임중으로 표시
-    2. 카운트 다운
-        2-1 . 맞추면 스코어 , 틀리면 다음단어로
-    3 . new word show                                                          🌊  
-    4. 단어 맞추면 스코어, input value to empty                                                           🌊  
-    */
+ 
     buttonChange('gaming...');
     button.classList.add('loading');
 
     countDown()   
    
     console.log(wordDisplay.innerHTML)
-
  
-    // const randomIndex = Math.floor(Math.random() * words.length)
     wordDisplay.innerHTML = words[Math.floor(Math.random()*100)];
 
 /* 
@@ -99,23 +82,9 @@ function run(){
  */
     time = gameTime;
 
-    // wordInput.addEventListener('change',match);
+    // wordInput.addEventListener('change',match);   
 }
 
-// js 2-4 input.value = wordDisplay.inner html , check
-function match(){
-
-    if (wordDisplay.innerHTML.toLowerCase() === wordInput.value.toLowerCase()) {            //🐞 ??bug
-        score++
-        scoreDisplay.innerHTML = score;        
-        wordInput.value = "";
-    }
-     else if (wordDisplay.innerHTML.toLowerCase() !== wordInput.value.toLowerCase()){
-        wrong++
-        wrongDisplay.innerHTML = wrong;
-        wordInput.value = ""; 
-    } 
-}
 
 // js 2-1. input enter key (same coding with "js 2")
 wordInput.addEventListener('keypress', run_enter);
@@ -135,19 +104,43 @@ function countDown() {
 
     //   🌊  put function of refresh new word                                        🌊  
     }    
-
     timeDisplay.innerHTML = time;
+    
 }
 
-// js 2-2. count down, setInterval 
-timeInterval = setInterval(countDown, 1000);
-// clearInterval(timeInterval);
+ // js 2-2. count down, setInterval 
+ function timeInterval() {
+    setInterval(countDown, 1000);
+ }
+ timeInterval();
+ 
+//  timeInterval = setInterval(countDown, 1000);
+ // clearInterval(timeInterval);
+
+
 
 
 // js 2-3. buttonChange
 function buttonChange(p_text) {
     button.innerHTML=p_text;    
 }
+
+
+// js 2-4 input.value = wordDisplay.inner html , check
+function match(){
+
+    if (wordDisplay.innerHTML.toLowerCase() === wordInput.value.toLowerCase()) {            //🐞 ??bug
+        score++
+        scoreDisplay.innerHTML = score;        
+        wordInput.value = "";
+    }
+     else if (wordDisplay.innerHTML.toLowerCase() !== wordInput.value.toLowerCase()){
+        wrong++
+        wrongDisplay.innerHTML = wrong;
+        wordInput.value = ""; 
+    } 
+}
+
 
 
 /* js 10. button_stop 
@@ -164,5 +157,7 @@ buttonStop.addEventListener('click',stop);
 function stop() {
     buttonChange('Game Start')
     button.classList.remove('loading');
+
     time = gameTime;
+    timeDisplay=time;
 }
