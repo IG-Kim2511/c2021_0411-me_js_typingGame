@@ -68,10 +68,11 @@ wordInput.addEventListener('click', run);
 
 function run(){
  
+    time = gameTime;
     buttonChange('gaming...');
     button.classList.add('loading');
 
-    countDown()   
+    countDown();
    
     console.log(wordDisplay.innerHTML)
  
@@ -82,7 +83,7 @@ function run(){
     wordDisplay.innerText = words[randomIndex];
     runNotification('success')
  */
-    time = gameTime;
+    
 
     // wordInput.addEventListener('change',match);   
 }
@@ -104,8 +105,9 @@ function countDown() {
     if (time > 0) {
         time--;        
     }else if(time === 0){
-
-    //   🌊  put function of refresh new word                                        🌊  
+        // wordDisplay.innerHTML = words[Math.floor(Math.random()*100)];
+        run();
+       
     }    
     timeDisplay.innerHTML = time;
     
