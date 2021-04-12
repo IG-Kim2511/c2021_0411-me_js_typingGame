@@ -17,7 +17,7 @@ const timeDisplay = document.querySelector('.time');
 
 const wordDisplay = document.querySelector('.word-display');
 const wordInput = document.querySelector('.word-input');
-
+const scoreDisplay = document.querySelector('.score');
 
 
 // js 2. button
@@ -28,7 +28,7 @@ function run(){
     2. 카운트 다운
         2-1 . 맞추면 스코어 , 틀리면 다음단어로
     3 . new word show
-    4. 단어 맞추면 스코어 */
+    4. 단어 맞추면 스코어, input value to empty */
     buttonChange('gaming...');
     button.classList.add('loading');
 
@@ -40,7 +40,9 @@ function run(){
     
     if (wordDisplay.innerHTML.toLowerCase() === wordInput.value.toLowerCase()) {
         score++
-        console.log(score)        
+        console.log(score)       
+        scoreDisplay.innerHTML = score;        
+        wordInput.value = "";
     }
 }
 
@@ -48,21 +50,8 @@ function run(){
 wordInput.addEventListener('keypress', run_enter);
 
 function run_enter(e) {
-    if (e.key === 'Enter') { 
-        
-        buttonChange('gaming...');
-        button.classList.add('loading');
-
-        countDown()
-
-        console.log(wordDisplay.innerHTML)
-        console.log(wordInput.value)
-
-        
-        if (wordDisplay.innerHTML.toLowerCase() === wordInput.value.toLowerCase()) {
-            score++
-            console.log(score)        
-        }
+    if (e.key === 'Enter') {         
+        run();
       }    
 }
 
@@ -71,7 +60,11 @@ function run_enter(e) {
 function countDown() {    
     if (time > 0) {
         time--;        
-    }  
+    }else if(time === 0){
+
+    //   🌊  put function of refresh new word
+    }    
+
     timeDisplay.innerHTML = time;
 }
 

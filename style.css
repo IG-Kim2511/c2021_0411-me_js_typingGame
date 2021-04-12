@@ -68,7 +68,14 @@ body{
 .word-input{
     padding: .5rem;
     width: 300px;
+    
 }
+
+.word-input-block{
+    background-color: var(--color-grey);
+    cursor: not-allowed;
+}
+
 .game-info{
     margin-top: 2rem;
     font-size: .8rem;
