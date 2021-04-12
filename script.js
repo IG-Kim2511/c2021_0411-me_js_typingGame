@@ -9,10 +9,10 @@ let time = gameTime;
 let timeInterval;
 let score = 0;
 let wrong = 0;
-let words= []
+let words =[];
 
+const url = "https://random-word-api.herokuapp.com/word?number=1000";
 
-const url = "https://random-word-api.herokuapp.com/word?number=100";
 const button = document.querySelector('.button');
 const buttonStop= document.querySelector('.button_stop');
 
@@ -20,6 +20,55 @@ const timeDisplay = document.querySelector('.time');
 const wordDisplay = document.querySelector('.word-display');
 const wordInput = document.querySelector('.word-input');
 const scoreDisplay = document.querySelector('.score');
+const wrongDisplay = document.querySelector('.score_wrong');
+
+
+// js 1. start
+init();
+
+function init() {
+  getWords();           //js 4. 
+    wordInput.addEventListener('change',match);
+}
+
+//js 4. axios /  new words
+
+
+function getWords() {    
+
+    axios.get(url)
+    .then(function (response) {
+        // handle success
+        
+        // word.floor(response.data.random() * max);
+        // console.log(word)
+     
+        response.data.forEach((a) => {
+            if (a.length < 7) {
+                words.push(a)            
+            }  
+        });
+
+        console.log(words)
+        buttonChange('game start');
+
+        /*                                                                          🌊  
+        🚀2. random 
+        4. less than 10 letters word , take
+        6. push those word to words array
+        
+        */
+    })
+    .catch(function (error) {
+        // handle error
+        console.log(error);
+    })
+    .then(function () {
+        // always executed
+    });   
+}
+
+
 
 
 // js 2. button click & run
@@ -38,37 +87,34 @@ function run(){
     countDown()   
    
     console.log(wordDisplay.innerHTML)
-    console.log(wordInput.value)
 
-    getWords();           //js 4. 
-    const randomIndex = Math.floor(Math.random()*words.length)
-    wordDisplay.innerHTML = words[randomIndex];
-
-
-    
-    if (wordDisplay.innerHTML.toLowerCase() === wordInput.value.toLowerCase()) {
-        score++
-        console.log(score)       
-        scoreDisplay.innerHTML = score;        
-        wordInput.value = "";
-    }
-    /* else{
-          wrong++
-        wordInput.value = "";
-    }
- */
-    
-
+ 
+    // const randomIndex = Math.floor(Math.random() * words.length)
+    wordDisplay.innerHTML = words[Math.floor(Math.random()*100)];
 
 /* 
     const randomIndex = Math.floor(Math.random() * words.length)
     wordDisplay.innerText = words[randomIndex];
     runNotification('success')
  */
-
-
-
     time = gameTime;
+
+    // wordInput.addEventListener('change',match);
+}
+
+// js 2-4 input.value = wordDisplay.inner html , check
+function match(){
+
+    if (wordDisplay.innerHTML.toLowerCase() === wordInput.value.toLowerCase()) {            //🐞 ??bug
+        score++
+        scoreDisplay.innerHTML = score;        
+        wordInput.value = "";
+    }
+     else if (wordDisplay.innerHTML.toLowerCase() !== wordInput.value.toLowerCase()){
+        wrong++
+        wrongDisplay.innerHTML = wrong;
+        wordInput.value = ""; 
+    } 
 }
 
 // js 2-1. input enter key (same coding with "js 2")
@@ -102,45 +148,6 @@ timeInterval = setInterval(countDown, 1000);
 function buttonChange(p_text) {
     button.innerHTML=p_text;    
 }
-
-//js 4. axios /  new words
-
-
-function getWords() {    
-
-    axios.get(url)
-    .then(function (response) {
-        // handle success
-        
-        // word.floor(response.data.random() * max);
-        // console.log(word)
-        // words.push(response.data);
-
-        response.data.forEach((a) => {
-            if (a.length < 10) {
-                words.push(a)            
-            }  
-        });
-
-        console.log(words)
-        buttonChange('getWords');
-
-        /*                                                                          🌊  
-        🚀2. random 
-        4. less than 10 letters word , take
-        6. push those word to words array
-        
-        */
-    })
-    .catch(function (error) {
-        // handle error
-        console.log(error);
-    })
-    .then(function () {
-        // always executed
-    });   
-}
-
 
 
 /* js 10. button_stop 
