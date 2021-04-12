@@ -20,7 +20,7 @@ const wordInput = document.querySelector('.word-input');
 const scoreDisplay = document.querySelector('.score');
 
 
-// js 2. button
+// js 2. button click & run
 button.addEventListener('click', run);
 
 function run(){
@@ -46,7 +46,7 @@ function run(){
     }
 }
 
-// js 2-1. input enter (same coding with "js 2")
+// js 2-1. input enter key (same coding with "js 2")
 wordInput.addEventListener('keypress', run_enter);
 
 function run_enter(e) {
@@ -62,13 +62,13 @@ function countDown() {
         time--;        
     }else if(time === 0){
 
-    //   🌊  put function of refresh new word
+    //   🌊  put function of refresh new word                                        🌊  
     }    
 
     timeDisplay.innerHTML = time;
 }
 
-// js 2-2. setInterval
+// js 2-2. count down, setInterval 
 timeInterval = setInterval(countDown, 1000);
 // clearInterval(timeInterval);
 
@@ -78,7 +78,41 @@ function buttonChange(p_text) {
     button.innerHTML=p_text;    
 }
 
-/* js 4. button_stop 
+//js 4. axios /  new words
+
+function getWords() {
+    
+
+    axios.get('https://random-word-api.herokuapp.com/word?number=1000')
+    .then(function (response) {
+        // handle success
+        console.log(response.data);
+
+        const word = response.data;
+        word.floor(response.data.random() * max);
+
+
+        /*                                                                          🌊  
+        🚀2. random 
+        4. less than 10 letters word , take
+        6. push those word to words array
+        
+        */
+    })
+    .catch(function (error) {
+        // handle error
+        console.log(error);
+    })
+    .then(function () {
+        // always executed
+    });
+
+}
+
+
+
+
+/* js 10. button_stop 
 
 1. change button to game start
 2.  classlist remove */
