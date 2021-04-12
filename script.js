@@ -27,7 +27,8 @@ init();
 
 function init() {
   getWords();           //js 4. 
-  wordInput.addEventListener('change',match);
+  wordInput.addEventListener('input',match);
+  wordInput.addEventListener('change',matchWrong);
 }
 
 //js 4. axios /  new words
@@ -134,7 +135,11 @@ function match(){
         scoreDisplay.innerHTML = score;        
         wordInput.value = "";
     }
-     else if (wordDisplay.innerHTML.toLowerCase() !== wordInput.value.toLowerCase()){
+   
+}
+function matchWrong(){
+
+  if (wordDisplay.innerHTML.toLowerCase() !== wordInput.value.toLowerCase()){
         wrong++
         wrongDisplay.innerHTML = wrong;
         wordInput.value = ""; 
