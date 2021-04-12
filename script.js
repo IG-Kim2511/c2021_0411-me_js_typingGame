@@ -61,9 +61,10 @@ function getWords() {
     });   
 }
 
-// js 2. button click & run
+// js 2. button click & run / input click & run
 
 button.addEventListener('click', run);
+wordInput.addEventListener('click', run);
 
 function run(){
  
@@ -95,6 +96,7 @@ function run_enter(e) {
         run();
       }    
 }
+
 
 
 // js 2-2. countDown
