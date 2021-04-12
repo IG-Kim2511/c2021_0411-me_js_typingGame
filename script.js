@@ -134,9 +134,10 @@ function match(){
         score++
         scoreDisplay.innerHTML = score;        
         wordInput.value = "";
-    }
-   
+        wordDisplay.innerHTML = words[Math.floor(Math.random()*100)];
+    }   
 }
+
 function matchWrong(){
 
   if (wordDisplay.innerHTML.toLowerCase() !== wordInput.value.toLowerCase()){
