@@ -8,6 +8,7 @@ let gameTime = 3;
 let time = gameTime;
 let timeInterval;
 let score = 0;
+let wrong = 0;
 let words= []
 
 
@@ -34,11 +35,15 @@ function run(){
     buttonChange('gaming...');
     button.classList.add('loading');
 
-    countDown()
-    
+    countDown()   
    
     console.log(wordDisplay.innerHTML)
     console.log(wordInput.value)
+
+    getWords();           //js 4. 
+    const randomIndex = Math.floor(Math.random()*words.length)
+    wordDisplay.innerHTML = words[randomIndex];
+
 
     
     if (wordDisplay.innerHTML.toLowerCase() === wordInput.value.toLowerCase()) {
@@ -47,11 +52,12 @@ function run(){
         scoreDisplay.innerHTML = score;        
         wordInput.value = "";
     }
-
+    /* else{
+          wrong++
+        wordInput.value = "";
+    }
+ */
     
-    getWords();           //js 4. 
-    const randomIndex = Math.floor(Math.random()*words.length)
-    wordDisplay.innerHTML = words[randomIndex];
 
 
 /* 

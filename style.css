@@ -84,7 +84,7 @@ body{
     width: 200px;
 }
 
-.time, .score{
+.time, .score, .score_wrong{
     font-size: 30px;
 }
 .button{
