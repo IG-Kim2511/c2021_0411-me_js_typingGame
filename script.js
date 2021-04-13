@@ -7,7 +7,7 @@
 
 let gameTime = 10;
 let time = gameTime;
-// let timeInterval;
+let timeInterval;
 let score = 0;
 let wrong = 0;
 let words =[];
@@ -105,12 +105,12 @@ function countDown() {
 }
 
  // js 2-2. count down, setInterval 
- function timeInterval() {
-    setInterval(countDown, 1000);
- }
- timeInterval();
+//  function timeInterval() {
+//     setInterval(countDown, 1000);
+//  }
+//  timeInterval();
  
-//  timeInterval = setInterval(countDown, 1000);
+ timeInterval = setInterval(countDown, 1000);
  // clearInterval(timeInterval);
 
 // js 2-3. buttonChange
