@@ -167,6 +167,11 @@ function stop() {
     time = 1000;
     timeDisplay.innerHTML = time;
 
+    score = 0;
+    scoreDisplay.innerHTML = score
+    wrong = 0;
+    wrongDisplay.innerHTML = wrong
+
     // clearInterval(timeInterval);   
 }
 
