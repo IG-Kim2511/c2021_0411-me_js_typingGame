@@ -1,120 +1,120 @@
 :root {
-    /* color */  
-    --naver-color :  #0eae44;
-    --kakao-color :  #fee101;
-  
-    --color-white: #ffffff;
-    --color-light-white: #eeeeee;
-    --color-dark-white: #bdbdbd;
-  
-    --color-black: #000000;
-    --color-grey: #616161;
-    --color-dark-grey: #4d4d4d;
-    --color-light-grey: #7c7979;
-    
-    --color-blue: #2b81e4;
-    --color-light-mint: #cbf3f0;
-    --color-yellow: #fff7d1;
-    --color-orange: #feb546;
-    --color-strong-orange: #dc2f02;
-    
-    --test-color: yellow;
-    
-    /* letterspacing : basic 0.1rem */
-    --letterspacing-basic: 0.1rem;
-    --letterspacing-test: 2rem;
-  
-    /* Size :basic 4px=0.5rem  */
-    --size-border-basic-radius: 0.5rem;
-    --size-border-test-radius: 1rem;
-  
-    /* Animation :basic 300ms=0.3s  */
-  
-    --animation_basic-duration: 0.3s;
-    --animation_test-duration: 1s;
-  }
+  /* color */
+  --naver-color: #0eae44;
+  --kakao-color: #fee101;
 
+  --color-white: #ffffff;
+  --color-light-white: #eeeeee;
+  --color-dark-white: #bdbdbd;
+
+  --color-black: #000000;
+  --color-grey: #616161;
+  --color-dark-grey: #4d4d4d;
+  --color-light-grey: #7c7979;
+
+  --color-blue: #2b81e4;
+  --color-light-mint: #cbf3f0;
+  --color-yellow: #fff7d1;
+  --color-orange: #feb546;
+  --color-strong-orange: #dc2f02;
+
+  --test-color: yellow;
+
+  /* letterspacing : basic 0.1rem */
+  --letterspacing-basic: 0.1rem;
+  --letterspacing-test: 2rem;
+
+  /* Size :basic 4px=0.5rem  */
+  --size-border-basic-radius: 0.5rem;
+  --size-border-test-radius: 1rem;
+
+  /* Animation :basic 300ms=0.3s  */
+
+  --animation_basic-duration: 0.3s;
+  --animation_test-duration: 1s;
+}
 
 /*  */
 
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
-body{
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.header{
-    width: 100%;
-    background-color: var(--naver-color);
-    color: var(--color-white);
-    text-align: center;
-    padding: 1rem;
-    margin-top: 3rem;
-
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.answer{
-    visibility: hidden;
-    /* visibility: visible; */
-    color: var(--color-strong-orange);
+.header {
+  width: 100%;
+  background-color: var(--naver-color);
+  color: var(--color-white);
+  text-align: center;
+  padding: 1rem;
+  margin-top: 3rem;
 }
 
-.word-display{
-    margin-top: 3rem;
-    font-size: 80px;
-    color: var(--naver-color);
+/* css-js 2 */
+.answer {
+  visibility: hidden;
+  /* visibility: visible; */
+  color: var(--color-strong-orange);
 }
 
-.word-input-box{
-    margin-top: 2rem;
-}
-.word-input{
-    padding: .5rem;
-    width: 300px;
-    
+.word-display {
+  margin-top: 3rem;
+  font-size: 80px;
+  color: var(--naver-color);
 }
 
-.word-input-block{
-    background-color: var(--color-grey);
-    cursor: not-allowed;
+.word-input-box {
+  margin-top: 2rem;
+}
+.word-input {
+  padding: 0.5rem;
+  width: 300px;
 }
 
-.game-info{
-    margin-top: 2rem;
-    font-size: .8rem;
-    display: flex;
-    justify-content: space-between;
-    width: 200px;
+.word-input-block {
+  background-color: var(--color-grey);
+  cursor: not-allowed;
 }
 
-.time, .score, .score_wrong{
-    font-size: 30px;
-}
-.button{
-    width: 200px;
-    height: 35px;
-    background: var(--naver-color);
-    color: var(--color-white);
-    border: none;
-    margin-top: 3rem;
-    cursor: pointer;
-}
-.button_stop{
-    width: 200px;
-    height: 35px;
-    background: var(--naver-color);
-    color: var(--color-white);
-    border: none;
-    margin-top: 3rem;
-    cursor: pointer;
+.game-info {
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
 }
 
-.loading{
-    background-color: var(--color-grey);
-    cursor: not-allowed;
+.time,
+.score,
+.score_wrong {
+  font-size: 30px;
+}
+.button {
+  width: 200px;
+  height: 35px;
+  background: var(--naver-color);
+  color: var(--color-white);
+  border: none;
+  margin-top: 3rem;
+  cursor: pointer;
+}
+.button_stop {
+  width: 200px;
+  height: 35px;
+  background: var(--naver-color);
+  color: var(--color-white);
+  border: none;
+  margin-top: 3rem;
+  cursor: pointer;
+}
+
+.loading {
+  background-color: var(--color-grey);
+  cursor: not-allowed;
 }

@@ -100,7 +100,7 @@ function countDown() {
     }else if(time === 0){
         // wordDisplay.innerHTML = words[Math.floor(Math.random()*100)];
         run();       
-    }    
+    }      
     timeDisplay.innerHTML = time;    
 }
 
@@ -127,7 +127,9 @@ function match(){
         wordInput.value = "";
         wordDisplay.innerHTML = words[Math.floor(Math.random()*100)];
         run();
-        answer.style.visibility = "visible";
+
+        answer.innerHTML = 'good!';                     /* css-js 2 */
+        answer.style.visibility = "visible";        
         setTimeout(function(){
             answer.style.visibility = "hidden";
        }, 1000);
@@ -140,6 +142,12 @@ function matchWrong(){
         wrong++
         wrongDisplay.innerHTML = wrong;
         wordInput.value = ""; 
+
+        answer.innerHTML = 'wrong';                     /* css-js 2 */
+        answer.style.visibility = "visible";
+        setTimeout(function(){
+            answer.style.visibility = "hidden";
+       }, 1000);
     } 
 }
 
@@ -156,8 +164,10 @@ function stop() {
     buttonChange('Game Start')
     button.classList.remove('loading');
 
-    time = 10;
+    time = gameTime;
     timeDisplay.innerHTML = time;
+
+   
 }
 
 
