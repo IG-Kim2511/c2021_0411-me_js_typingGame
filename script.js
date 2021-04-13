@@ -1,9 +1,3 @@
-/* 1. 버튼이 게임중으로 표시
-2. 카운트 다운
-2-1 . 맞추면 스코어 , 틀리면 다음단어로
-3 . new word show
-4. 단어 맞추면 스코어 */
-
 
 let gameTime = 10;
 let time = gameTime;
@@ -105,11 +99,7 @@ function countDown() {
 }
 
  // js 2-2. count down, setInterval 
-//  function timeInterval() {
-//     setInterval(countDown, 1000);
-//  }
-//  timeInterval();
- 
+
  timeInterval = setInterval(countDown, 1000);
  // clearInterval(timeInterval);
 
@@ -154,7 +144,7 @@ function matchWrong(){
 /* js 10. button_stop 
 
 1. change button to game start
-2.  classlist remove of button
+2. classlist remove of button
 3. reset time and stop                                                  🌊  
 */
 
