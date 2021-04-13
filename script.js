@@ -81,7 +81,6 @@ function run(){
     console.log(wordDisplay.innerHTML)
  
     wordDisplay.innerHTML = words[Math.floor(Math.random()*100)];
-
 }
 
 // js 2-1. input enter key (same coding with "js 2")
@@ -101,6 +100,7 @@ function countDown() {
         // wordDisplay.innerHTML = words[Math.floor(Math.random()*100)];
         run();       
     }      
+    
     timeDisplay.innerHTML = time;    
 }
 
@@ -164,10 +164,10 @@ function stop() {
     buttonChange('Game Start')
     button.classList.remove('loading');
 
-    time = gameTime;
+    time = 1000;
     timeDisplay.innerHTML = time;
 
-   
+    // clearInterval(timeInterval);   
 }
 
 
