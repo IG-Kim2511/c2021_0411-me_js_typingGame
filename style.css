@@ -58,6 +58,12 @@ body{
 
 }
 
+.answer{
+    visibility: hidden;
+    /* visibility: visible; */
+    color: var(--color-strong-orange);
+}
+
 .word-display{
     margin-top: 3rem;
     font-size: 80px;

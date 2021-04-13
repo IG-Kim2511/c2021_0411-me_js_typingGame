@@ -4,6 +4,7 @@
 3 . new word show
 4. 단어 맞추면 스코어 */
 
+
 let gameTime = 10;
 let time = gameTime;
 // let timeInterval;
@@ -13,14 +14,17 @@ let words =[];
 
 const url = "https://random-word-api.herokuapp.com/word?number=1000";
 
+const answer = document.querySelector('.answer');
 const button = document.querySelector('.button');
 const buttonStop= document.querySelector('.button_stop');
 
-const timeDisplay = document.querySelector('.time');
 const wordDisplay = document.querySelector('.word-display');
 const wordInput = document.querySelector('.word-input');
-const scoreDisplay = document.querySelector('.score');
 const wrongDisplay = document.querySelector('.score_wrong');
+
+const scoreDisplay = document.querySelector('.score');
+const timeDisplay = document.querySelector('.time');
+
 
 // js 1. start
 init();
@@ -123,8 +127,10 @@ function match(){
         wordInput.value = "";
         wordDisplay.innerHTML = words[Math.floor(Math.random()*100)];
         run();
-        
-    
+        answer.style.visibility = "visible";
+        setTimeout(function(){
+            answer.style.visibility = "hidden";
+       }, 1000);
     }   
 }
 
@@ -150,8 +156,8 @@ function stop() {
     buttonChange('Game Start')
     button.classList.remove('loading');
 
-    time = 0;
-    timeDisplay.innerHTML = "0";
+    time = 10;
+    timeDisplay.innerHTML = time;
 }
 
 
