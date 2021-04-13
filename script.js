@@ -27,6 +27,9 @@ function init() {
   getWords();           //js 4. 
   wordInput.addEventListener('input',match);
   wordInput.addEventListener('change',matchWrong);
+
+  time = 1000;
+  timeDisplay.innerHTML = time;
 }
 
 //js 4. axios /  new words
@@ -109,7 +112,7 @@ function buttonChange(p_text) {
 }
 
 // js 2-4 input.value = wordDisplay.inner html , check
-function match(){
+function match(i){
 
     if (wordDisplay.innerHTML.toLowerCase() === wordInput.value.toLowerCase()) { 
         score++
@@ -123,8 +126,17 @@ function match(){
         setTimeout(function(){
             answer.style.visibility = "hidden";
        }, 1000);
-    }   
+    }
+    
+    if (score === 10) {
+        answer.innerHTML = 'Cara mia!';                   
+        answer.style.visibility = "visible";        
+        setTimeout(function(){
+            answer.style.visibility = "hidden";
+       }, 1000);        
+    } 
 }
+
 
 function matchWrong(){
 
