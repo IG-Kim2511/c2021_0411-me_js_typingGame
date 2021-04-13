@@ -112,26 +112,3 @@ body{
     background-color: var(--color-grey);
     cursor: not-allowed;
 }
-
-.toast{   
-    
-    position: relative;
-}
-
-.toast-wrap {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    height: 10%;
-}
-
-/* .toast-item {
-    width: 250px;
-    padding: 0.5rem 0;
-    margin-top: 0.5rem;
-    text-align: center;
-    color: #fff;
-    transition: left 500ms ease-in-out, top 500ms ease-in-out;
-    position: relative;
-    background: linear-gradient(to left, #FBD3E9, #BB377D)
-} */

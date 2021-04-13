@@ -124,7 +124,7 @@ function match(){
         wordDisplay.innerHTML = words[Math.floor(Math.random()*100)];
         run();
         
-        runNotification();
+    
     }   
 }
 
@@ -155,24 +155,3 @@ function stop() {
 }
 
 
-
-// toastify
-
-function runNotification(type) {
-    // toastify options
-    const option = {
-        text: `${wordDisplay.innerText}!!`,
-        duration: 10,
-        newWindow: true,
-        gravity: "bottom", // `top` or `bottom`
-        position: 'left', // `left`, `center` or `right`
-        backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)"
-    }
-    if (type === 'error') {
-        option.text = 'press start button'
-        option.position = 'right'
-        option.backgroundColor = 'red'
-    }
-
-    Toastify(option).showToast();
-}
