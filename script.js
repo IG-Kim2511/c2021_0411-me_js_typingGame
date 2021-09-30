@@ -32,35 +32,57 @@ function init() {
   timeDisplay.innerHTML = time;
 }
 
-//js 4. axios /  new words
+//🍀 js 4. axios /  new words
 
-function getWords() {    
-
-    axios.get(url)
-    .then(function (response) {
-        // handle success
+// function getWords() {    
+//     axios.get(url)
+//     .then(function (response) {
+//         // handle success
         
-        // word.floor(response.data.random() * max);
-        // console.log(word)
+//         // word.floor(response.data.random() * max);
+//         // console.log(word);
+//         console.log(response)
      
-        response.data.forEach((a) => {
+//         response.data.forEach((a) => {
+//             if (a.length < 7) {
+//                 words.push(a)            
+//             }  
+//         });
+
+//         console.log(words)
+//         buttonChange('game start');      
+//     })
+//     .catch(function (error) {
+//         // handle error
+//         console.log(error);
+//     })
+//     .then(function () {
+//         // always executed
+//     });   
+// }
+
+
+// 🍀fetch
+// getWords();
+function getWords() {
+    fetch(url)
+    .then((res) => res.json())
+    .then((a_data) => {
+        console.log(a_data);
+        /*🍉 ~~~coding~~~ */
+     
+        a_data.forEach((a) => {
             if (a.length < 7) {
                 words.push(a)            
             }  
         });
 
         console.log(words)
-        buttonChange('game start');
-      
-    })
-    .catch(function (error) {
-        // handle error
-        console.log(error);
-    })
-    .then(function () {
-        // always executed
-    });   
+        buttonChange('game start');   
+    });    
 }
+
+    
 
 // js 2. button click & run / input click & run
 
