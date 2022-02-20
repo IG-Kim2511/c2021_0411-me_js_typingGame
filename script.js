@@ -67,13 +67,13 @@ function init() {
 function getWords() {
     fetch(url)
     .then((res) => res.json())
-    .then((a_data) => {
-        console.log(a_data);
+    .then((a_datas) => {
+        console.log(a_datas);
         /*🍉 ~~~coding~~~ */
      
-        a_data.forEach((a) => {
-            if (a.length < 7) {
-                words.push(a)            
+        a_datas.forEach((a_data) => {
+            if (a_data.length < 7) {
+                words.push(a_data)            
             }  
         });
 
