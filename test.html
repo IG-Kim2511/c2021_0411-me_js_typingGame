@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <h1>test</h1>
+    <h2 class="show">
+        fetch or axios datas
+    </h2>
+    <button class="btn">btn</button>
+    
+
+    <script>
+        const url = "https://random-word-api.herokuapp.com/word?number=1000";
+        let words =[];
+        
+        const btn = document.querySelector('.btn');
+        const showElm = document.querySelector('.show');
+
+        // js 1. start
+
+        init();
+        function init() {
+        getWords();        
+        }
+
+        //🍀 js 4. axios /  new words
+
+        // function getWords() {    
+        //     axios.get(url)
+        //     .then(function (response) {
+        //         // handle success
+                
+        //         // word.floor(response.data.random() * max);
+        //         // console.log(word);
+        //         console.log(response)
+            
+        //         response.data.forEach((a) => {
+        //             if (a.length < 7) {
+        //                 words.push(a)            
+        //             }  
+        //         });
+
+        //         console.log(words)
+        //         buttonChange('game start');      
+        //     })
+        //     .catch(function (error) {
+        //         // handle error
+        //         console.log(error);
+        //     })
+        //     .then(function () {
+        //         // always executed
+        //     });   
+        // }
+
+
+        // 🍀fetch
+        // getWords();
+        function getWords() {
+            fetch(url)
+            .then((res) => res.json())
+            .then((a_datas) => {
+                console.log(a_datas);
+                /*🍉 ~~~coding~~~ */
+            
+                a_datas.forEach((a_data) => {
+                    if (a_data.length < 7) {
+                        words.push(a_data)            
+                    }  
+                });
+
+                console.log(words)
+            });    
+        }
+
+        // btn, innerHTML
+        btn.addEventListener('click',()=>{            
+            showElm.innerHTML = `${words}`            
+        })
+
+
+    </script>
+</body>
+</html>
