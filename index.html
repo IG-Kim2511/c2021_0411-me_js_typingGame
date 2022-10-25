@@ -2,51 +2,61 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Typing game</title>
-    
-    <link rel="stylesheet" href="style.css">
+    <title>Typing Game</title>
 
-    <!-- axios -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <link rel="stylesheet" href="main.css" />
 
 
   </head>
+
   <body>
-    
-    <section>
-      
-      <div class="header">
-        <!-- <h1>Hi Kara! I love you</h1> -->
-        <h1>Typing game</h1>
-      </div>
+    <div class="header">
+      <h1>typing game</h1>
+    </div>
+    <div class="word-display">Hello</div>
+    <div class="word-input-box">
+      <input type="text" class="word-input" />
+      <h2 class="answer">good!</h2>    
+    </div>
 
-      <div class="word-display">let's start</div>
-
-      <div class="word-input-box">
-        <input type="text" class="word-input" />
-        <h1 class="answer">good!</h1>        
-      </div>
-
+    <h2>
       <div class="game-info">
-        <div>Time limit : <span class="time">0</span> seconds</div>
+        time limit :
+        <span class="time">0</span> seconds
       </div>
-
       <div class="game-info">  
         <div>Score: <span class="score">0</span></div>
       </div>
       <div class="game-info">  
         <div>wrong: <span class="score_wrong">0</span></div>
       </div>
+    </h2>
 
-      <button class="button">loading</button>
-      <button class="button_stop">stop</button>
+    <div class="btn_container">
+      <button class="btn button loading" onclick="run()">loading..</button>
+      <button class=" btn button_stop" onclick="stop()">stop</button>
+    </div>
 
-     
-    </section>
+    <div class="toast-wrap"></div>
 
-    <script src="script.js"></script>
+
+    <script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"
+      integrity="sha512-VZ6m0F78+yo3sbu48gElK4irv2dzPoep8oo9LEjxviigcnnnNvnTOJRSrIhuFk68FMLOpiNz+T77nNY89rnWDg=="
+      crossorigin="anonymous"
+    ></script>
+
+
+    <script src="main.js"></script>
   </body>
-
 </html>
