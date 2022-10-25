@@ -6,7 +6,6 @@ let time;
 let isPlaying = false;
 let score = 0;
 
-
 const url = "https://random-word-api.herokuapp.com/word?number=100";
 const timeDisplay = document.querySelector('.time')
 const button = document.querySelector('.button')
@@ -14,11 +13,8 @@ const wordDisplay = document.querySelector('.word-display')
 const wordInput = document.querySelector('.word-input')
 const scoreDisplay = document.querySelector('.score')
 
-
-
-
-
-function getWords(params) {
+// 🍀api
+function getWords() {
     axios.get(url).then((res) => {
 
         res.data.forEach((word) => {
@@ -35,16 +31,12 @@ function getWords(params) {
     })
 }
 
-
-
-function init(params) {
+function init() {
     getWords();
 
     wordInput.addEventListener('input', checkMatch); 
     
-    wordInput.addEventListener('change',matchWrong);
-
-    
+    wordInput.addEventListener('change',matchWrong);    
 }
 init();
 
@@ -52,9 +44,7 @@ init();
 const answer = document.querySelector('.answer');
 
 
-function checkMatch(params) {
-    
-
+function checkMatch() {   
     if (wordInput.value.toLowerCase() === wordDisplay.innerText.toLowerCase()) {
 
         if (!isPlaying) {
@@ -77,21 +67,22 @@ function checkMatch(params) {
         // answer
         answer.innerText = 'good!'
         answer.style.visibility = 'visible'
-        setTimeout(() => {
-            
+        setTimeout(() => {            
             answer.style.visibility = 'hidden'
         }, 1000);
 
-        console.log('checkmatch')
-    }
-    
+        //  timeDisplay color
+        timeDisplay.style.backgroundColor = '#3b5999';        
+        setTimeout(() => {
+            timeDisplay.style.backgroundColor ="";
+        }, 100);
+    }    
 }
 
 
 // 🍀
 let wrong = 0;
 const wrongDisplay = document.querySelector('.score_wrong');
-
 
 function matchWrong(){
 
@@ -112,26 +103,33 @@ function matchWrong(){
           wordDisplay.innerText= words[randomIndex];
           toastifyL('wrong')          
 
+        // answer
           answer.innerHTML = 'wrong';                     /* css-js 2 */
           answer.style.visibility = "visible";
           setTimeout(function(){
               answer.style.visibility = "hidden";
          }, 1000);
+
+         //  timeDisplay color
+         timeDisplay.style.backgroundColor = '#3b5999';        
+         setTimeout(() => {
+             timeDisplay.style.backgroundColor ="";
+         }, 100);
       } 
   }
 
 
-function checkStatus(params) {
+function checkStatus() {
     if (!isPlaying && time === 0) {
         isPlaying = false;
         buttonChange('start','game start');
-        clearInterval(checkInterval);
-        
-    }
-    
+        clearInterval(checkInterval);        
+    }    
 }
 
-function run(params) {
+
+// 🍀run, stop
+function run() {
     if (words.length < 1) {
         return
         
@@ -146,12 +144,29 @@ function run(params) {
 
     checkInterval = setInterval(checkStatus, 50);
 
-    buttonChange('loading','ing');
+    buttonChange('loading','ing');    
+}
+
+function stop() {
+    buttonChange('start', 'game start')
+    button.classList.remove('loading');
+
+    time = SETTING_TIME;
+    timeDisplay.innerHTML = time;
+
+    score = 0;
+    scoreDisplay.innerHTML = score
+    // wrong = 0;
+    // wrongDisplay.innerHTML = wrong
+
+    clearInterval(timeInterval);   
     
+    location.reload();  
 }
 
 
-function countDown(params) {
+
+function countDown() {
     time>0 ? time-- : isPlaying = false;
     timeDisplay.innerText = time;
     if (!isPlaying) {
@@ -161,9 +176,6 @@ function countDown(params) {
     
     console.log('count')
 }
-
-
-
 
 
 function buttonChange(type,text) {
@@ -191,25 +203,7 @@ function toastifyL(type) {
             option.position = 'right'
             option.backgroundColor = 'red'
         }
-        Toastify(option).showToast();
-    
-}
-
-function stop(params) {
-    buttonChange('start', 'game start')
-    button.classList.remove('loading');
-
-    time = SETTING_TIME;
-    timeDisplay.innerHTML = time;
-
-    score = 0;
-    scoreDisplay.innerHTML = score
-    // wrong = 0;
-    // wrongDisplay.innerHTML = wrong
-
-    clearInterval(timeInterval);   
-    
-    location.reload();  
+        Toastify(option).showToast();    
 }
 
 

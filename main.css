@@ -42,10 +42,11 @@ body {
 
 .game-info {
   margin-top: 2rem;
-  font-size: 0.8rem;
+  font-size: 1.5rem;
   display: flex;
   justify-content: space-between;
-  width: 200px;
+  width: 300px;
+  
 }
 
 .time,
@@ -61,11 +62,13 @@ body {
   border: none;
   margin-top: 3rem;
   cursor: pointer;
+ 
 }
 
 .loading {
   background: #ccc;
   cursor: not-allowed
+ 
 }
 
 .toast-wrap {
