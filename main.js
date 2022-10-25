@@ -15,10 +15,12 @@ const scoreDisplay = document.querySelector('.score')
 
 // 🍀api
 function getWords() {
+    console.log('getWords')
+
     axios.get(url).then((res) => {
 
         res.data.forEach((word) => {
-            if (word.length < 8) {
+            if (word.length < 9) {
                 words.push(word);
             }
             buttonChange('start', 'game start')
@@ -32,6 +34,8 @@ function getWords() {
 }
 
 function init() {
+    console.log('init')
+
     getWords();
 
     wordInput.addEventListener('input', checkMatch); 
@@ -45,6 +49,7 @@ const answer = document.querySelector('.answer');
 
 
 function checkMatch() {   
+    console.log('checkMatch')
     if (wordInput.value.toLowerCase() === wordDisplay.innerText.toLowerCase()) {
 
         if (!isPlaying) {
@@ -85,6 +90,7 @@ let wrong = 0;
 const wrongDisplay = document.querySelector('.score_wrong');
 
 function matchWrong(){
+    console.log('matchWrong')
 
     if (wordDisplay.innerHTML.toLowerCase() !== wordInput.value.toLowerCase()){
 
@@ -120,6 +126,7 @@ function matchWrong(){
 
 
 function checkStatus() {
+    console.log('checkStatus')
     if (!isPlaying && time === 0) {
         isPlaying = false;
         buttonChange('start','game start');
@@ -130,6 +137,8 @@ function checkStatus() {
 
 // 🍀run, stop
 function run() {
+    console.log('run')
+
     if (words.length < 1) {
         return
         
@@ -139,15 +148,19 @@ function run() {
     score= 0;
     scoreDisplay.innerText = 0;
     time = SETTING_TIME;
+
     isPlaying= true;
+
     timeInterval = setInterval(countDown, 1000);
 
-    checkInterval = setInterval(checkStatus, 50);
+    checkInterval = setInterval(checkStatus, 500);
 
     buttonChange('loading','ing');    
 }
 
 function stop() {
+    console.log('stop')
+
     buttonChange('start', 'game start')
     button.classList.remove('loading');
 
@@ -167,20 +180,20 @@ function stop() {
 
 
 function countDown() {
+    console.log('countDown')
+
     time>0 ? time-- : isPlaying = false;
     timeDisplay.innerText = time;
     if (!isPlaying) {
-        clearInterval(timeInterval)
-        
-    }
-    
-    console.log('count')
+        clearInterval(timeInterval)        
+    }    
 }
 
 
 function buttonChange(type,text) {
-    button.innerText= text;
-    // type ==='loading' ? button.classList.add('loading') : button.classList.remove('loading');
+    console.log('buttonChange')
+
+    button.innerText= text;    
     type ==='start' ? button.classList.remove('loading') :  button.classList.add('loading') ;
 }
 
